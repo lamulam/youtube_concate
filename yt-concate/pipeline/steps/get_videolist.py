@@ -8,14 +8,14 @@ class GetVideoList(Step):
     def __init__(self):
         pass
 
-    def process(self, data, inputs):
-        return self.get_all_video_in_channel(inputs['channel_id'])
+    def process(self, data, inputs, utils):
+        return self.get_all_video_in_channel(inputs['channel_id'], utils)
 
-    def get_all_video_in_channel(self, channel_id):
+    def get_all_video_in_channel(self, channel_id, utils):
         base_video_url = 'https://www.youtube.com/watch?v='
         base_search_url = 'https://www.googleapis.com/youtube/v3/search?'
 
-        first_url = base_search_url+'key={}&channelId={}&part=snippet,id&order=date&maxResults=25'.format(API_KEY, channel_id)
+        first_url = base_search_url+'key={}&channelId={}&part=snippet,id&order=date&maxResults=5'.format(API_KEY, channel_id)
 
         video_links = []
         url = first_url
