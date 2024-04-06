@@ -17,8 +17,10 @@ class DownloadCaptions(Step):
             else:
                 print('downloading new caption file.')
                 
-          
-            command = f'yt-dlp --write-auto-sub --sub-lang en --skip-download --convert-subs srt --output "download_captions/%(id)s.%(ext)s" {url}'
+            try:
+                command = f'yt-dlp --write-auto-sub --sub-lang en --skip-download --convert-subs srt --output "download_captions/%(id)s.%(ext)s" {url}'
+            except:
+                print('downloading error')
             os.system(command)
         end = time.time()  
 
