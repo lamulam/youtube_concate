@@ -6,7 +6,7 @@ class Utils:
         pass
     
     def create_dirs(self):
-        os.makedirs('download_dir', exist_ok = True)
+        os.makedirs('output_dir', exist_ok = True)
         os.makedirs('download_captions', exist_ok = True)
         os.makedirs('download_videos', exist_ok = True)
         
@@ -25,8 +25,11 @@ class Utils:
         return os.path.exists(yt.caption_filepath) and os.path.getsize(yt.caption_filepath) > 0
 
     def video_list_exists(self, channel_id):
-        path = os.path.join('download_captions', channel_id, '.txt')
+        path = os.path.join('download_captions', channel_id + '.txt')
         return os.path.exists(path)
+    
+    def get_output_filepath(self, channel_id, search_word):
+        return os.path.join('output_dir', channel_id + '_' + search_word + '.mp4')
 
 
 

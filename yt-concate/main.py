@@ -6,6 +6,7 @@ from pipeline.steps.download_caption import DownloadCaptions
 from pipeline.steps.read_caption import ReadCaption
 from pipeline.steps.search import Search
 from pipeline.steps.download_videos import DownloadVideos
+from pipeline.steps.edit_video import EditVideo
 from pipeline.steps.postflight import Postflight
 from utils import Utils
 
@@ -14,7 +15,8 @@ CHANNEL_ID = 'UCkr5nkb4_jvvEeSY9POqqtQ'
 def main():
     inputs = {
         'channel_id': CHANNEL_ID,
-        'search_word': 'Trident',
+        'search_word': 'third',
+        'limit': 20
         }
 
     steps = [
@@ -25,6 +27,7 @@ def main():
         ReadCaption(),
         Search(),
         DownloadVideos(),
+        EditVideo(),
         Postflight(),
         ]
     

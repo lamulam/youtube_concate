@@ -4,8 +4,8 @@ class YT:
     def __init__(self, url):
         self.url = str(url)
         self.id = self.get_video_if_from_url(self.url)
-        self.caption_filepath = os.path.join('download_captions', self.id + '.en.vtt')
-        self.video_filepath = os.path.join('download_video', self.id + '.webm')
+        self.caption_filepath = os.path.join('download_captions', self.id + '.en.srt')
+        self.video_filepath = os.path.join('download_videos', self.id + '.webm')
         self.captions = None
 
 

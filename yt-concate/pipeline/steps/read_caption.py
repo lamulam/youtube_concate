@@ -14,12 +14,12 @@ class ReadCaption(Step):
                 for line in f:
                     if '-->' in line:
                         time_line = True
-                        time = line.strip().split(' align:')[0]
+                        time = line.strip()
                         continue
                     elif '</c>' in line:
                         continue
                     elif time_line:
-                        caption = line
+                        caption = line.strip()
                         captions[caption] = time
                         time_line = False
             yt.captions = captions
