@@ -9,7 +9,7 @@ class GetVideoList(Step):
         pass
 
     def process(self, data, inputs, utils):
-        if utils.video_list_file_exists(inputs['channel_id']):
+        if utils.video_list_exists(inputs['channel_id']):
             print('Found existing video list file for channel id', inputs['channel_id'])
             return self.read_file(utils.get_video_list_filepath(inputs['channel_id']))
         return self.get_all_video_in_channel(inputs['channel_id'], utils)
@@ -18,7 +18,7 @@ class GetVideoList(Step):
         base_video_url = 'https://www.youtube.com/watch?v='
         base_search_url = 'https://www.googleapis.com/youtube/v3/search?'
 
-        first_url = base_search_url+'key={}&channelId={}&part=snippet,id&order=date&maxResults=5'.format(API_KEY, channel_id)
+        first_url = base_search_url+'key={}&channelId={}&part=snippet,id&order=date&maxResults=3'.format(API_KEY, channel_id)
 
         video_links = []
         url = first_url
